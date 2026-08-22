@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#103e51"/><stop offset=".53" stop-color="#2d8295"/><stop offset="1" stop-color="#9bd2d4"/>
+    </linearGradient>
+    <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#9bd2d4"/><stop offset="1" stop-color="#edf8f8"/></linearGradient>
+    <filter id="blur"><feGaussianBlur stdDeviation="26"/></filter>
+  </defs>
+  <rect width="1600" height="900" fill="url(#sky)"/>
+  <circle cx="1240" cy="170" r="210" fill="#fff" opacity=".16" filter="url(#blur)"/>
+  <path d="M0 605C250 530 420 585 640 545c230-42 426-154 960-35v390H0Z" fill="url(#ground)"/>
+  <path d="M0 686c266-48 478-8 697-32 334-37 565-109 903-52v298H0Z" fill="#eff8f5" opacity=".7"/>
+  <g opacity=".9">
+    <path d="M210 608h780v160H210z" fill="#fff"/>
+    <path d="M290 438h620l80 170H210z" fill="#fff"/>
+    <path d="M525 260h150v178H525z" fill="#fff"/>
+    <path d="m600 210 83 50H517z" fill="#fff"/>
+    <path d="M328 490h44v118h-44zm103 0h44v118h-44zm103 0h44v118h-44zm103 0h44v118h-44zm103 0h44v118h-44zm103 0h44v118h-44z" fill="#103e51" opacity=".65"/>
+    <path d="M562 300h76v96h-76z" fill="#103e51" opacity=".65"/>
+  </g>
+  <g opacity=".74" fill="#103e51">
+    <circle cx="106" cy="645" r="70"/><rect x="98" y="645" width="16" height="104" rx="8"/>
+    <circle cx="1120" cy="605" r="88"/><rect x="1110" y="604" width="20" height="128" rx="10"/>
+    <circle cx="1370" cy="650" r="62"/><rect x="1362" y="650" width="16" height="94" rx="8"/>
+  </g>
+  <path d="M85 806c316-54 694-38 1039-10 188 15 338 10 476-4" fill="none" stroke="#2d8295" stroke-width="12" opacity=".3"/>
+  <text x="110" y="122" fill="#ffffff" font-family="Arial, sans-serif" font-size="24" letter-spacing="8" opacity=".88">JIANGXIA UNIVERSITY</text>
+  <text x="108" y="188" fill="#ffffff" font-family="serif" font-size="58" font-weight="700">知识跨越边界</text>
+  <text x="111" y="238" fill="#ffffff" font-family="Arial, sans-serif" font-size="20" letter-spacing="3" opacity=".7">LIBRARY / DISCOVERY / DIALOGUE</text>
+</svg>

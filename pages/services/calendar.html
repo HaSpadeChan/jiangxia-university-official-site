@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2026—2027学年校历 · 江夏大学</title>
+  <meta name="description" content="江夏大学2026—2027学年教学周、假期、考试与重要活动安排">
+  <link rel="icon" href="../../assets/logo-mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../css/subpage.css">
+  <link rel="stylesheet" href="../../css/calendar.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">跳至主要内容</a>
+
+  <div class="utility">
+    <div class="container">
+      <span>明德 · 博学 · 求真 · 致远</span>
+      <nav class="utility-links" aria-label="快捷服务">
+        <a href="../../pages/portal/login.html?role=student">学生</a>
+        <a href="../../pages/portal/login.html?role=staff">教职工</a>
+        <a href="../../pages/portal/login.html?role=alumni">校友</a>
+        <a href="../../pages/portal/login.html?role=visitor">访客</a>
+        <a href="../../pages/portal/login.html">信息门户</a>
+        <a href="../../pages/services/email.html">电子邮箱</a>
+        <a href="../../pages/en/index.html">English</a>
+      </nav>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="container header-row">
+      <a class="brand" href="../../index.html" aria-label="江夏大学首页">
+        <img src="../../assets/logo-mark.svg" alt="江夏大学校徽">
+        <span><strong>江夏大学</strong><small>JIANGXIA UNIVERSITY</small></span>
+      </a>
+      <nav class="main-nav" data-main-nav aria-label="主导航">
+        <a href="../../pages/about/index.html">学校概况</a>
+        <a href="../../pages/news/index.html">新闻资讯</a>
+        <a href="../../pages/schools/index.html">院系设置</a>
+        <a href="../../pages/education/index.html">教育教学</a>
+        <a href="../../pages/research/index.html">科学研究</a>
+        <a href="../../pages/admissions/index.html">招生就业</a>
+        <a href="../../pages/cooperation/index.html">合作交流</a>
+        <a class="is-active" href="../../pages/services/index.html">校园服务</a>
+      </nav>
+      <div class="nav-tools">
+        <a href="../../pages/search.html" aria-label="站内搜索">搜索</a>
+        <a href="../../pages/portal/login.html">登录</a>
+      </div>
+      <button class="mobile-toggle" type="button" data-mobile-toggle aria-expanded="false">导航</button>
+    </div>
+  </header>
+
+  <section class="page-hero calendar-hero" style="background-image:url('../../assets/街景.png')">
+    <div class="container">
+      <p>ACADEMIC CALENDAR</p>
+      <h1>校历</h1>
+      <div class="hero-summary">查询教学周、考试、假期和校级重要活动安排</div>
+    </div>
+  </section>
+
+  <div class="breadcrumb">
+    <div class="container">
+      <a href="../../index.html">首页</a><span>›</span>
+      <a href="../../pages/services/index.html">校园服务</a><span>›</span>
+      <span>校历</span>
+    </div>
+  </div>
+
+  <main id="main" class="page-main calendar-main">
+    <div class="container" data-calendar-root>
+      <header class="calendar-heading">
+        <div>
+          <p class="section-kicker">江夏大学教务处</p>
+          <h1>2026—2027学年校历</h1>
+          <p>本校历为虚构演示数据，法定节假日及临时教学调整以学校后续通知为准。</p>
+        </div>
+        <button class="calendar-print" type="button" data-print-calendar>打印当前学期</button>
+      </header>
+
+      <section class="calendar-toolbar" aria-label="校历显示选项">
+        <div class="term-switch" role="group" aria-label="选择学期">
+          <button type="button" class="is-active" data-term="autumn" aria-pressed="true">秋季学期</button>
+          <button type="button" data-term="spring" aria-pressed="false">春季学期</button>
+        </div>
+        <p id="termRange">2026年8月20日—2027年2月21日</p>
+      </section>
+
+      <div class="calendar-legend" aria-label="校历图例">
+        <span><i class="legend-teaching"></i>教学日</span>
+        <span><i class="legend-event"></i>校级活动</span>
+        <span><i class="legend-exam"></i>复习考试</span>
+        <span><i class="legend-holiday"></i>假期</span>
+        <span><i class="legend-today"></i>当前日期</span>
+      </div>
+
+      <section class="calendar-layout">
+        <div>
+          <div id="monthGrid" class="month-grid" aria-live="polite"></div>
+          <div id="selectedDateDetail" class="selected-date-detail" role="status">
+            点击带有圆点的日期，可查看当天安排。
+          </div>
+        </div>
+
+        <aside class="term-notes" aria-labelledby="termNotesTitle">
+          <div class="term-notes-head">
+            <span id="termBadge">AUTUMN</span>
+            <h2 id="termNotesTitle">秋季学期重要安排</h2>
+          </div>
+          <ol id="eventList"></ol>
+          <p class="calendar-disclaimer">寒暑假和节假日安排如有变化，以学校办公室与教务处正式通知为准。</p>
+        </aside>
+      </section>
+
+      <section class="class-time-section" id="class-times">
+        <details>
+          <summary>查看江夏大学上课时间安排</summary>
+          <div class="class-time-content">
+            <p>本作息自2026—2027学年秋季学期起执行；实验、实习及体育课程可按教学需要另行安排。</p>
+            <div class="class-time-grid">
+              <table>
+                <caption>上午</caption>
+                <thead><tr><th>节次</th><th>时间</th></tr></thead>
+                <tbody>
+                  <tr><td>第一节</td><td>08:00—08:45</td></tr>
+                  <tr><td>第二节</td><td>08:50—09:35</td></tr>
+                  <tr><td>第三节</td><td>09:50—10:35</td></tr>
+                  <tr><td>第四节</td><td>10:40—11:25</td></tr>
+                  <tr><td>第五节</td><td>11:30—12:15</td></tr>
+                </tbody>
+              </table>
+              <table>
+                <caption>下午</caption>
+                <thead><tr><th>节次</th><th>时间</th></tr></thead>
+                <tbody>
+                  <tr><td>第六节</td><td>14:00—14:45</td></tr>
+                  <tr><td>第七节</td><td>14:50—15:35</td></tr>
+                  <tr><td>第八节</td><td>15:50—16:35</td></tr>
+                  <tr><td>第九节</td><td>16:40—17:25</td></tr>
+                  <tr><td>第十节</td><td>17:30—18:15</td></tr>
+                </tbody>
+              </table>
+              <table>
+                <caption>晚上</caption>
+                <thead><tr><th>节次</th><th>时间</th></tr></thead>
+                <tbody>
+                  <tr><td>第十一节</td><td>19:00—19:45</td></tr>
+                  <tr><td>第十二节</td><td>19:50—20:35</td></tr>
+                  <tr><td>第十三节</td><td>20:40—21:25</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+      </section>
+
+      <nav class="calendar-links" aria-label="页面导航">
+        <a href="../../pages/services/index.html">← 返回校园服务</a>
+        <a href="../../index.html">返回学校首页 →</a>
+      </nav>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div><h3>江夏大学</h3><p class="footer-note">本网站为虚构故事辅助页面，与任何真实高校无隶属或合作关系。页面内容与联系方式均为演示占位。</p></div>
+      <div><h3>快速链接</h3><a href="../../pages/about/index.html">学校概况</a><a href="../../pages/schools/index.html">机构设置</a><a href="../../pages/admissions/careers.html">人才招聘</a><a href="../../pages/services/disclosure.html">信息公开</a></div>
+      <div><h3>校园服务</h3><a href="../../pages/services/ehall.html">办事大厅</a><a href="../../pages/services/library.html">图书馆</a><a href="../../pages/services/jiangxia-campus-map/index.html">校园地图</a><a href="../../pages/services/calendar.html">校历</a></div>
+    </div>
+    <div class="footer-bottom">© 2026 Jiangxia University · Demo only</div>
+  </footer>
+
+  <script src="../../js/site-pages.js"></script>
+  <script src="../../js/calendar.js"></script>
+</body>
+</html>

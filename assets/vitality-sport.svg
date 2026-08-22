@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 850">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#185a65"/><stop offset=".56" stop-color="#4ca6a5"/><stop offset="1" stop-color="#d3ece4"/></linearGradient><filter id="b"><feGaussianBlur stdDeviation="30"/></filter></defs>
+  <rect width="1200" height="850" fill="url(#g)"/>
+  <circle cx="996" cy="127" r="170" fill="#fff" opacity=".18" filter="url(#b)"/>
+  <path d="M0 663C300 561 576 731 1200 578V850H0Z" fill="#fff" opacity=".16"/>
+  <g transform="translate(60 0)"><circle cx="540" cy="510" r="240" fill="none" stroke="#fff" stroke-width="28" opacity=".9"/><path d="M300 510h480M540 270c-112 80-112 400 0 480M540 270c112 80 112 400 0 480M370 340c120 90 260 90 340 0M370 680c120-90 260-90 340 0" fill="none" stroke="#fff" stroke-width="18" opacity=".86"/></g>
+  <text x="60" y="72" fill="#fff" font-family="Arial, sans-serif" font-size="17" letter-spacing="6" opacity=".8">JXU PLACEHOLDER</text>
+  <text x="60" y="768" fill="#fff" font-family="serif" font-size="40" font-weight="700">环湖接力赛</text>
+  <text x="62" y="804" fill="#fff" font-family="Arial, sans-serif" font-size="14" letter-spacing="3" opacity=".78">SPORT / YOUTH</text>
+</svg>

@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="江夏大学互动校园地图，提供地点检索、分类筛选与校内步行路线演示。" />
+  <title>校园地图｜江夏大学</title>
+  <link rel="stylesheet" href="assets/campus-map.css" />
+</head>
+<body>
+  <a class="skip-link" href="#mapSvg">跳至校园地图</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="../../../index.html" aria-label="返回江夏大学首页">
+        <img src="assets/logo-mark.svg" alt="江夏大学校徽" />
+        <span><strong>江夏大学</strong><small>JIANGXIA UNIVERSITY</small></span>
+      </a>
+      <nav aria-label="页面导航">
+        <a href="../../../index.html">学校主页</a>
+        <a href="../index.html">校园服务</a>
+        <a class="is-current" href="index.html" aria-current="page">校园地图</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="map-page">
+    <aside class="map-sidebar" aria-label="地图工具">
+      <div class="map-title">
+        <p>JIANGXIA CAMPUS</p>
+        <h1>江夏大学<br />地图</h1>
+        <span>上北下南 · 方位示意</span>
+      </div>
+      <label class="search-box" for="placeSearch">
+        <span aria-hidden="true">⌕</span>
+        <input id="placeSearch" type="search" placeholder="搜索地点或服务" autocomplete="off" />
+      </label>
+      <div class="filter-stack" role="group" aria-label="地点分类">
+        <button type="button" class="filter-button is-active" data-filter="all"><span>全部地点</span><small>18</small></button>
+        <button type="button" class="filter-button" data-filter="academic"><span>教学科研</span><small>6</small></button>
+        <button type="button" class="filter-button" data-filter="landmark"><span>校园地标</span><small>3</small></button>
+        <button type="button" class="filter-button" data-filter="life"><span>生活服务</span><small>5</small></button>
+        <button type="button" class="filter-button" data-filter="sport"><span>体育设施</span><small>2</small></button>
+        <button type="button" class="filter-button" data-filter="landscape"><span>水景园林</span><small>2</small></button>
+      </div>
+      <div class="legend" aria-label="地图图例">
+        <span><i class="legend-building"></i>建筑</span>
+        <span><i class="legend-water"></i>水域</span>
+        <span><i class="legend-lawn"></i>草坪</span>
+        <span><i class="legend-selected"></i>当前地点</span>
+      </div>
+    </aside>
+
+    <section class="map-workspace" aria-label="江夏大学互动地图">
+      <div class="map-topbar">
+        <div><strong>江夏大学校园总览</strong><span id="mapStatus" role="status" aria-live="polite">当前显示 18 个地点</span></div>
+        <div class="view-actions" aria-label="地图视图控制">
+          <button type="button" id="zoomIn" aria-label="放大地图">＋</button>
+          <button type="button" id="zoomOut" aria-label="缩小地图">−</button>
+          <button type="button" id="resetView">复位</button>
+        </div>
+      </div>
+
+      <div class="map-canvas" id="campusMap">
+        <svg id="mapSvg" viewBox="0 0 1500 1050" role="img" aria-labelledby="svgTitle svgDesc">
+          <title id="svgTitle">江夏大学校园平面地图</title>
+          <desc id="svgDesc">上方为北。图书馆和馆前水池位于校园北部，大型不规则湖泊位于校园中部，湖上设置一条连接图书馆与大礼堂的石质步行桥。大礼堂在湖泊以南；体育区和理工医学建筑位于东侧，教学区位于中南部，学生生活区和南门位于最南侧。</desc>
+          <defs>
+            <pattern id="waterPattern" width="44" height="18" patternUnits="userSpaceOnUse"><path class="water-wave" d="M0 10 C10 3 20 17 30 10 S50 17 60 10" fill="none" stroke="#fff" stroke-opacity=".4" stroke-width="2" /></pattern>
+            <pattern id="treePattern" width="36" height="36" patternUnits="userSpaceOnUse"><circle cx="14" cy="16" r="8" fill="#93aa82" /><circle cx="22" cy="12" r="7" fill="#78936d" /><circle cx="20" cy="22" r="8" fill="#a8ba91" /></pattern>
+            <filter id="softShadow" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="4" stdDeviation="3" flood-color="#293338" flood-opacity=".2" /></filter>
+            <marker id="routeArrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#c73c45" /></marker>
+            <g id="pin"><path class="pin-body" style="fill:#c73c45;stroke:none" d="M0 -18 C-10 -18 -16 -11 -16 -2 C-16 10 0 24 0 24 C0 24 16 10 16 -2 C16 -11 10 -18 0 -18 Z" /><circle class="pin-center" style="fill:#fff;stroke:none" cx="0" cy="-2" r="5" /></g>
+          </defs>
+
+          <path class="campus-base" d="M86 84 L376 58 L576 70 L752 45 L1022 66 L1326 92 L1435 250 L1454 716 L1378 926 L1170 997 L862 1004 L622 989 L392 1018 L160 965 L58 786 L72 485 Z" />
+
+          <g class="greenery" aria-hidden="true">
+            <path d="M98 96 L350 74 L406 230 L242 330 L84 305 Z" /><path d="M1090 83 L1319 106 L1415 259 L1372 392 L1266 316 L1210 157 Z" />
+            <path d="M81 520 L214 430 L275 579 L225 783 L78 773 Z" /><path d="M1272 434 L1434 354 L1444 710 L1376 866 L1268 792 Z" /><path d="M124 826 L300 838 L335 979 L165 948 L84 799 Z" />
+          </g>
+
+          <g class="roads" aria-hidden="true">
+            <path class="major-road" d="M745 987 L745 705" /><path class="major-road" d="M227 901 L1272 901" /><path class="major-road" d="M224 713 L1281 713" />
+            <path class="major-road" d="M263 485 C380 533 497 533 604 496 C701 463 830 458 954 482 C1073 505 1198 488 1310 438" />
+            <path class="major-road" d="M307 226 C435 156 560 138 685 150 C830 164 930 153 1036 127" />
+            <path class="minor-road" d="M282 935 L282 372" /><path class="minor-road" d="M1227 934 L1227 190" /><path class="minor-road" d="M969 935 L969 691" />
+            <path class="minor-road" d="M531 932 L531 710" /><path class="minor-road" d="M352 827 L1142 827" /><path class="minor-road" d="M908 674 C954 583 979 503 991 420" />
+            <path class="minor-road" d="M481 682 C478 606 442 525 393 477" /><path class="minor-road" d="M1011 432 L1322 432" /><path class="minor-road" d="M1028 586 L1312 586" />
+            <path class="minor-road" d="M105 368 L322 368" /><path class="minor-road" d="M119 646 L289 646" />
+          </g>
+
+          <g class="unnamed-buildings" aria-hidden="true">
+            <g class="block-cluster north-west"><rect x="125" y="125" width="104" height="52" /><rect x="244" y="112" width="86" height="65" /><rect x="114" y="196" width="152" height="43" /><rect x="282" y="197" width="82" height="43" /><rect x="144" y="262" width="91" height="54" /><rect x="252" y="260" width="121" height="54" /><rect x="390" y="97" width="86" height="39" /><rect x="391" y="151" width="118" height="36" /><rect x="393" y="203" width="112" height="34" /></g>
+            <g class="block-cluster west-edge"><path d="M111 393 H226 V452 H190 V476 H112 Z" /><rect x="128" y="494" width="106" height="52" /><rect x="102" y="566" width="132" height="47" /><path d="M107 670 H215 V760 H158 V736 H107 Z" /><rect x="122" y="789" width="106" height="51" /><rect x="247" y="776" width="69" height="59" /></g>
+            <g class="block-cluster north-east"><rect x="1274" y="130" width="61" height="97" /><rect x="1351" y="154" width="52" height="74" /><rect x="1277" y="261" width="126" height="48" /><rect x="1289" y="326" width="91" height="61" /><rect x="1323" y="454" width="90" height="54" /><rect x="1298" y="528" width="116" height="42" /><rect x="1322" y="607" width="91" height="65" /><rect x="1291" y="689" width="111" height="55" /><rect x="1276" y="771" width="126" height="43" /><rect x="1290" y="832" width="90" height="55" /></g>
+            <g class="block-cluster center-fill"><rect x="285" y="519" width="89" height="35" /><rect x="264" y="573" width="79" height="38" /><rect x="1185" y="466" width="80" height="42" /><rect x="1225" y="611" width="71" height="38" /><rect x="1135" y="735" width="92" height="42" /><rect x="1161" y="789" width="66" height="40" /><rect x="255" y="852" width="84" height="32" /><rect x="1174" y="850" width="74" height="31" /></g>
+          </g>
+
+          <g class="map-water" aria-hidden="true">
+            <path class="main-lake" style="fill:#67c1d1;stroke:#49a9ba;stroke-width:4" d="M329 278 C382 230 449 229 502 261 C551 291 579 288 622 249 C678 198 755 206 799 255 C838 299 842 344 884 360 C923 375 970 335 1005 361 C1041 387 1039 452 1005 484 C963 524 911 526 874 552 C831 582 807 620 746 618 C684 617 661 573 617 558 C563 540 532 586 479 569 C432 554 421 508 377 491 C330 473 294 438 300 390 C304 353 290 315 329 278 Z" />
+            <path class="lake-pattern" style="fill:url(#waterPattern);stroke:none" d="M329 278 C382 230 449 229 502 261 C551 291 579 288 622 249 C678 198 755 206 799 255 C838 299 842 344 884 360 C923 375 970 335 1005 361 C1041 387 1039 452 1005 484 C963 524 911 526 874 552 C831 582 807 620 746 618 C684 617 661 573 617 558 C563 540 532 586 479 569 C432 554 421 508 377 491 C330 473 294 438 300 390 C304 353 290 315 329 278 Z" />
+            <path class="island" d="M548 337 C586 306 635 311 650 345 C666 382 636 416 600 423 C562 430 521 402 522 370 C523 356 533 347 548 337 Z" />
+            <path class="island" d="M787 437 C821 410 864 414 879 447 C893 479 868 506 833 512 C798 518 765 495 765 465 C765 454 773 444 787 437 Z" />
+          </g>
+
+          <g class="library-hall-axis" aria-hidden="true">
+            <path d="M729 243 C724 326 734 431 729 582" fill="none" stroke="#a9b2ae" stroke-width="28" stroke-linecap="round" />
+            <path d="M729 243 C724 326 734 431 729 582" fill="none" stroke="#d9ddd9" stroke-width="21" stroke-linecap="round" />
+            <path d="M729 243 C724 326 734 431 729 582" fill="none" stroke="#b5bdb9" stroke-width="2" stroke-dasharray="2 9" stroke-linecap="round" />
+            <ellipse cx="730" cy="411" rx="27" ry="16" fill="#d9ddd9" stroke="#a9b2ae" stroke-width="3" />
+            <circle cx="730" cy="411" r="5" fill="#81958f" />
+          </g>
+
+          <g class="landscape-details" aria-hidden="true">
+            <path class="tree-strip" d="M319 231 C399 192 498 191 564 225 L542 255 C468 225 394 228 329 265 Z" />
+            <path class="tree-strip" d="M307 480 C355 514 401 532 456 545 L440 576 C378 565 331 541 292 507 Z" />
+            <path class="tree-strip" d="M1003 348 C1068 319 1136 305 1210 311 L1208 347 C1135 344 1079 355 1020 381 Z" />
+            <path class="tree-strip" d="M985 505 C1066 531 1131 530 1205 508 L1216 541 C1133 568 1062 564 978 538 Z" />
+            <rect class="lawn" x="560" y="723" width="102" height="78" rx="3" /><rect class="reflecting-pool" x="689" y="725" width="112" height="74" rx="3" /><rect class="lawn" x="828" y="723" width="100" height="78" rx="3" />
+            <rect class="lawn" x="627" y="817" width="108" height="69" rx="3" /><rect class="lawn" x="758" y="817" width="108" height="69" rx="3" />
+          </g>
+
+          <g id="routeLayer" class="route-layer" aria-hidden="true"><polyline id="routeLine" points="" marker-end="url(#routeArrow)" /><circle cx="745" cy="970" r="9" /></g>
+
+          <g class="places">
+            <a class="place category-landscape" href="#library-pool" data-place="library-pool" aria-label="查看图书馆水池">
+              <g class="site-shape water-site"><path style="fill:#67c1d1;stroke:#49a9ba;stroke-width:4" d="M664 75 C704 59 775 61 815 80 L805 135 C767 151 700 149 656 132 Z" /><path class="lake-pattern" style="fill:url(#waterPattern);stroke:none" d="M668 81 C710 68 769 69 808 84 L799 128 C760 140 707 140 663 127 Z" /></g>
+              <g class="map-label" transform="translate(735 104)"><text>馆前水池</text></g><use class="place-pin" href="#pin" transform="translate(820 112)" />
+            </a>
+            <a class="place category-academic" href="#library" data-place="library" aria-label="查看图书馆">
+              <g class="site-shape named-building library-building" filter="url(#softShadow)"><path style="fill:#c3c6c5;stroke:#929897;stroke-width:3" d="M595 158 H650 V143 H801 V158 H860 V243 H595 Z" /><rect style="fill:#c3c6c5;stroke:#929897;stroke-width:3" x="685" y="174" width="85" height="69" /><path class="building-detail" d="M620 183 H674 M782 183 H836 M620 210 H674 M782 210 H836" /></g>
+              <g class="map-label strong-label" transform="translate(727 198)"><text>图书馆</text></g><use class="place-pin" href="#pin" transform="translate(866 214)" />
+            </a>
+            <a class="place category-sport" href="#stadium" data-place="stadium" aria-label="查看体育场">
+              <g class="site-shape stadium-shape" filter="url(#softShadow)"><rect x="1037" y="175" width="178" height="254" rx="78" /><rect x="1058" y="195" width="136" height="214" rx="61" /><rect class="field" x="1081" y="234" width="90" height="136" rx="6" /><path class="field-line" d="M1126 234 V370 M1081 302 H1171 M1111 302 A15 15 0 1 0 1141 302 A15 15 0 1 0 1111 302" /></g>
+              <g class="map-label strong-label" transform="translate(1126 301)"><text>体育场</text></g><use class="place-pin" href="#pin" transform="translate(1205 216)" />
+            </a>
+            <a class="place category-sport" href="#gymnasium" data-place="gymnasium" aria-label="查看体育馆">
+              <g class="site-shape named-building" filter="url(#softShadow)"><path style="fill:#c3c6c5;stroke:#929897;stroke-width:3" d="M1243 246 H1337 Q1361 246 1361 270 V355 Q1361 379 1337 379 H1243 Z" /><path class="building-detail" d="M1261 276 H1338 M1261 307 H1338 M1261 338 H1338" /></g>
+              <g class="map-label" transform="translate(1300 316)"><text>体育馆</text></g><use class="place-pin" href="#pin" transform="translate(1365 272)" />
+            </a>
+            <a class="place category-academic" href="#innovation" data-place="innovation" aria-label="查看实验楼与创新中心">
+              <g class="site-shape named-building campus-complex" filter="url(#softShadow)"><path style="fill:#c3c6c5;stroke:#929897;stroke-width:3" d="M296 562 H454 V545 H548 V668 H507 V688 H316 V653 H296 Z" /><path class="courtyard" d="M363 588 H468 V647 H363 Z" /><path class="building-detail" d="M316 580 H346 M485 580 H524 M316 625 H346 M485 625 H524" /></g>
+              <g class="map-label strong-label" transform="translate(422 618)"><text>实验楼 / 创新中心</text></g><use class="place-pin" href="#pin" transform="translate(542 574)" />
+            </a>
+            <a class="place category-landmark" href="#grand-hall" data-place="grand-hall" aria-label="查看大礼堂">
+              <g class="site-shape named-building hall-building" filter="url(#softShadow)"><path style="fill:#c3c6c5;stroke:#929897;stroke-width:3" d="M612 584 H846 L872 608 V670 H586 V608 Z" /><rect style="fill:#c3c6c5;stroke:#929897;stroke-width:3" x="674" y="608" width="84" height="62" /><path class="building-detail" d="M613 609 H656 M776 609 H819 M613 636 H656 M776 636 H819" /></g>
+              <g class="map-label strong-label" transform="translate(729 628)"><text>大礼堂</text></g><use class="place-pin" href="#pin" transform="translate(864 626)" />
+            </a>
+            <a class="place category-landmark" href="#grand-fountain" data-place="grand-fountain" aria-label="查看礼堂喷泉">
+              <g class="site-shape fountain-shape" transform="translate(729 697)"><ellipse rx="25" ry="13" /><circle r="6" /><path d="M0 2 C-5 -10 -4 -20 0 -28 C4 -20 5 -10 0 2 Z" /></g>
+              <g class="map-label compact-label" transform="translate(729 700)"><text>礼堂喷泉</text></g><use class="place-pin" href="#pin" transform="translate(765 688)" />
+            </a>
+            <a class="place category-academic" href="#engineering" data-place="engineering" aria-label="查看工程实验中心">
+              <g class="site-shape named-building" filter="url(#softShadow)"><path style="fill:#c3c6c5;stroke:#929897;stroke-width:3" d="M1000 503 H1189 V574 H1018 V557 H985 V520 Z" /><path class="building-detail" d="M1021 526 H1169 M1021 551 H1169" /></g>
+              <g class="map-label" transform="translate(1092 540)"><text>工程实验中心</text></g><use class="place-pin" href="#pin" transform="translate(1194 527)" />
+            </a>
+            <a class="place category-academic" href="#medical" data-place="medical" aria-label="查看医学楼">
+              <g class="site-shape named-building" filter="url(#softShadow)"><path style="fill:#c3c6c5;stroke:#929897;stroke-width:3" d="M1010 611 H1202 V681 H982 V643 H1010 Z" /><path class="building-detail" d="M1032 635 H1177 M1032 660 H1177" /></g>
+              <g class="map-label strong-label" transform="translate(1093 648)"><text>医学楼</text></g><use class="place-pin" href="#pin" transform="translate(1207 637)" />
+            </a>
+            <a class="place category-academic" href="#humanities" data-place="humanities" aria-label="查看人文社科楼群">
+              <g class="site-shape named-building campus-complex" filter="url(#softShadow)"><path style="fill:#c3c6c5;stroke:#929897;stroke-width:3" d="M342 744 H603 V868 H553 V846 H392 V868 H342 Z" /><path class="courtyard" d="M407 774 H539 V831 H407 Z" /><path class="building-detail" d="M366 770 H397 M549 770 H579 M366 838 H397 M549 838 H579" /></g>
+              <g class="map-label strong-label" transform="translate(473 805)"><text>人文社科楼群</text></g><use class="place-pin" href="#pin" transform="translate(597 770)" />
+            </a>
+            <a class="place category-academic" href="#science" data-place="science" aria-label="查看理工教学楼群">
+              <g class="site-shape named-building campus-complex" filter="url(#softShadow)"><path style="fill:#c3c6c5;stroke:#929897;stroke-width:3" d="M843 744 H1124 V868 H1067 V846 H901 V868 H843 Z" /><path class="courtyard" d="M914 774 H1054 V831 H914 Z" /><path class="building-detail" d="M866 770 H905 M1063 770 H1101 M866 838 H905 M1063 838 H1101" /></g>
+              <g class="map-label strong-label" transform="translate(984 805)"><text>理工教学楼群</text></g><use class="place-pin" href="#pin" transform="translate(1117 770)" />
+            </a>
+            <a class="place category-life" href="#canteen" data-place="canteen" aria-label="查看学生食堂">
+              <g class="site-shape named-building" filter="url(#softShadow)"><rect style="fill:#c3c6c5;stroke:#929897;stroke-width:3" x="348" y="916" width="154" height="57" /><path class="building-detail" d="M370 938 H480 M370 958 H480" /></g>
+              <g class="map-label" transform="translate(425 946)"><text>学生食堂</text></g><use class="place-pin" href="#pin" transform="translate(496 929)" />
+            </a>
+            <a class="place category-life" href="#west-dorm" data-place="west-dorm" aria-label="查看西苑学生公寓">
+              <g class="site-shape named-building" filter="url(#softShadow)"><path style="fill:#c3c6c5;stroke:#929897;stroke-width:3" d="M538 911 H687 V979 H538 Z M554 894 H672 V911 H554 Z" /></g>
+              <g class="map-label" transform="translate(613 945)"><text>西苑学生公寓</text></g><use class="place-pin" href="#pin" transform="translate(681 921)" />
+            </a>
+            <a class="place category-landmark" href="#south-gate" data-place="south-gate" aria-label="查看南门">
+              <g class="site-shape gate-shape" filter="url(#softShadow)"><rect x="705" y="938" width="80" height="36" /><rect x="698" y="925" width="14" height="60" /><rect x="778" y="925" width="14" height="60" /><path d="M688 931 H802 L786 911 H704 Z" /></g>
+              <g class="map-label compact-label" transform="translate(745 1006)"><text>南门</text></g><use class="place-pin" href="#pin" transform="translate(806 944)" />
+            </a>
+            <a class="place category-life" href="#east-dorm" data-place="east-dorm" aria-label="查看东苑学生公寓">
+              <g class="site-shape named-building" filter="url(#softShadow)"><path style="fill:#c3c6c5;stroke:#929897;stroke-width:3" d="M814 911 H963 V979 H814 Z M830 894 H948 V911 H830 Z" /></g>
+              <g class="map-label" transform="translate(889 945)"><text>东苑学生公寓</text></g><use class="place-pin" href="#pin" transform="translate(957 921)" />
+            </a>
+            <a class="place category-life" href="#student-center" data-place="student-center" aria-label="查看大学生活动中心">
+              <g class="site-shape named-building" filter="url(#softShadow)"><path style="fill:#c3c6c5;stroke:#929897;stroke-width:3" d="M987 915 H1153 V973 H1009 V960 H975 V929 Z" /><path class="building-detail" d="M1011 937 H1129 M1011 957 H1129" /></g>
+              <g class="map-label" transform="translate(1064 946)"><text>大学生活动中心</text></g><use class="place-pin" href="#pin" transform="translate(1147 928)" />
+            </a>
+            <a class="place category-landscape" href="#central-gardens" data-place="central-gardens" aria-label="查看中央庭园">
+              <circle class="invisible-hit" cx="746" cy="803" r="95" /><g class="map-label compact-label" transform="translate(746 805)"><text>中央庭园</text></g><use class="place-pin" href="#pin" transform="translate(806 787)" />
+            </a>
+            <a class="place category-life" href="#campus-clinic" data-place="campus-clinic" aria-label="查看校医院">
+              <g class="site-shape named-building" filter="url(#softShadow)"><rect style="fill:#c3c6c5;stroke:#929897;stroke-width:3" x="233" y="886" width="84" height="70" /><path class="medical-cross" style="fill:#c73c45" d="M268 904 H282 V919 H297 V933 H282 V948 H268 V933 H253 V919 H268 Z" /></g>
+              <g class="map-label compact-label" transform="translate(275 970)"><text>校医院</text></g><use class="place-pin" href="#pin" transform="translate(314 899)" />
+            </a>
+          </g>
+
+          <g class="orientation" aria-hidden="true"><text x="1391" y="116">N</text><path d="M1391 132 L1379 165 L1391 156 L1403 165 Z" /></g>
+        </svg>
+
+        <div class="map-instruction">滚轮缩放 · 按住拖动 · 点击建筑查看详情</div>
+        <article class="place-card" id="placeCard" aria-live="polite">
+          <button type="button" class="card-close" id="cardClose" aria-label="收起地点详情">×</button>
+          <div class="card-kicker" id="detailCategory">校园地标</div><h2 id="detailName">江夏大学南门</h2><p id="detailEnglish">SOUTH GATE</p>
+          <p id="detailDescription">校园南侧主入口，进入后依次连接学生生活区、中央庭园、礼堂喷泉和大礼堂。</p>
+          <dl><div><dt>开放信息</dt><dd id="detailHours">每日 06:00—23:00</dd></div><div><dt>附近设施</dt><dd id="detailNearby">校医院、东西苑学生公寓</dd></div></dl>
+          <div class="card-actions"><button type="button" id="routeButton">从南门规划路线</button><button type="button" id="clearRoute" hidden>清除路线</button></div>
+        </article>
+        <div class="search-results" id="searchResults" hidden><div class="result-heading"><strong>地点结果</strong><span id="resultCount">18 处</span></div><div id="placeList"></div></div>
+      </div>
+    </section>
+  </main>
+
+  <footer><span>江夏大学校园地图 · 示意版</span><span>本地图不作为工程测绘或应急疏散依据</span></footer>
+  <script src="scripts/campus-map.js"></script>
+</body>
+</html>

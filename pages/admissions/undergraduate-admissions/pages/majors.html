@@ -1,0 +1,542 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>专业探索 · 江夏大学本科招生网</title>
+  <meta
+    name="description"
+    content="了解江夏大学示例本科专业的学习内容、专业特色与发展方向。"
+  >
+
+  <link rel="icon" href="../assets/logo-mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/admissions.css">
+
+  <!-- 本页专用样式：直接保留在 majors.html 中，不需要修改 admissions.css -->
+  <style>
+    .major-overview {
+      margin-bottom: 34px;
+      padding: 28px 30px;
+      border-left: 5px solid var(--teal-600);
+      background:
+        linear-gradient(120deg, var(--teal-050), #ffffff 68%);
+    }
+
+    .major-overview p {
+      margin: 0;
+      color: var(--ink-600);
+    }
+
+    .major-category-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 0 0 42px;
+    }
+
+    .major-category-nav a {
+      display: inline-flex;
+      min-height: 40px;
+      align-items: center;
+      padding: 0 17px;
+      color: var(--teal-800);
+      border: 1px solid var(--teal-200);
+      background: var(--teal-050);
+      font-size: 13px;
+      font-weight: 800;
+      transition:
+        color var(--ease),
+        border-color var(--ease),
+        background var(--ease),
+        transform var(--ease);
+    }
+
+    .major-category-nav a:hover {
+      color: #ffffff;
+      border-color: var(--teal-700);
+      background: var(--teal-700);
+      transform: translateY(-2px);
+    }
+
+    .major-section {
+      margin-bottom: 48px;
+      scroll-margin-top: 110px;
+    }
+
+    .major-section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 18px;
+      padding-bottom: 13px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .major-section-heading h3 {
+      margin: 0;
+      color: var(--teal-900);
+      font-family: var(--serif);
+      font-size: 25px;
+    }
+
+    .major-section-heading span {
+      color: var(--ink-600);
+      font-size: 12px;
+    }
+
+    .explore-major-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .explore-major-card {
+      position: relative;
+      min-height: 190px;
+      padding: 23px 23px 21px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: #ffffff;
+      transition:
+        border-color var(--ease),
+        box-shadow var(--ease),
+        transform var(--ease);
+    }
+
+    .explore-major-card::before {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      height: 3px;
+      content: "";
+      background:
+        linear-gradient(90deg, var(--teal-700), var(--teal-300));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--ease);
+    }
+
+    .explore-major-card:hover {
+      border-color: var(--teal-200);
+      box-shadow: var(--shadow-small);
+      transform: translateY(-4px);
+    }
+
+    .explore-major-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .major-meta {
+      display: block;
+      color: var(--teal-700);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+    }
+
+    .explore-major-card h4 {
+      margin: 13px 0 9px;
+      font-family: var(--serif);
+      font-size: 20px;
+      line-height: 1.4;
+    }
+
+    .explore-major-card p {
+      margin: 0;
+      color: var(--ink-600);
+      font-size: 13px;
+      line-height: 1.75;
+    }
+
+    .major-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+      margin-top: 8px;
+      padding: 28px 30px;
+      color: #ffffff;
+      background: var(--teal-900);
+    }
+
+    .major-actions h3 {
+      margin: 0 0 5px;
+      font-family: var(--serif);
+      font-size: 23px;
+    }
+
+    .major-actions p {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.68);
+      font-size: 13px;
+    }
+
+    .major-action-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .major-action-links a {
+      display: inline-flex;
+      min-height: 42px;
+      align-items: center;
+      padding: 0 17px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .major-action-links a:first-child {
+      color: var(--teal-950);
+      border-color: #ffffff;
+      background: #ffffff;
+    }
+
+    .major-action-links a:hover {
+      border-color: var(--teal-300);
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .major-action-links a:first-child:hover {
+      background: var(--teal-100);
+    }
+
+    @media (max-width: 900px) {
+      .explore-major-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 560px) {
+      .major-overview,
+      .major-actions {
+        padding: 22px;
+      }
+
+      .major-section-heading {
+        display: block;
+      }
+
+      .major-section-heading span {
+        display: block;
+        margin-top: 4px;
+      }
+
+      .explore-major-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .explore-major-card {
+        min-height: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">跳至主要内容</a>
+
+  <div class="demo-notice">
+    <div class="container">
+      本网站为虚构招生网站，招生政策、计划、分数和联系方式均为虚构，仅用于辅助虚构剧情发展。
+    </div>
+  </div>
+
+  <div class="utility">
+    <div class="container utility-inner">
+      <span>明德 · 博学 · 求真 · 致远</span>
+
+      <nav class="utility-links" aria-label="快捷入口">
+        <a href="contact.html">联系我们</a>
+        <a href="search.html">站内搜索</a>
+        <a href="../../../../index.html" title="接入现有官网后返回江夏大学主页">
+          江夏大学主页
+        </a>
+      </nav>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../index.html" aria-label="江夏大学本科招生网首页">
+        <img src="../assets/logo-mark.svg" alt="江夏大学校徽">
+
+        <span class="brand-copy">
+          <strong>江夏大学</strong>
+          <span>本科招生网 · ADMISSIONS</span>
+        </span>
+      </a>
+
+      <nav class="main-nav" data-main-nav aria-label="招生主导航">
+        <a href="../index.html">首页</a>
+        <a href="meet.html">遇见江夏</a>
+        <a href="policies.html">招生信息</a>
+        <a class="is-active" href="majors.html">专业探索</a>
+        <a href="special.html">专题招生</a>
+        <a href="campus.html">校园生活</a>
+        <a href="faq.html">报考问答</a>
+      </nav>
+
+      <div class="header-tools">
+        <a class="tool-link" href="search.html">搜索</a>
+        <a class="tool-link primary" href="query.html">录取查询</a>
+
+        <button
+          class="nav-toggle"
+          type="button"
+          data-nav-toggle
+          aria-expanded="false"
+        >
+          导航
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <section class="subhero">
+    <img src="../assets/auditorium.png" alt="">
+
+    <div class="container subhero-inner">
+      <h1>专业探索</h1>
+      <p>从兴趣出发，认识不同专业的学习内容与成长方向。</p>
+    </div>
+  </section>
+
+  <div class="breadcrumb">
+    <div class="container">
+      <a href="../index.html">招生首页</a>
+      <span>›</span>
+      <span>专业探索</span>
+    </div>
+  </div>
+
+  <main id="main" class="page-main">
+    <div class="container page-layout">
+      <aside class="side-nav">
+        <h2>本科招生</h2>
+        <a href="policies.html">招生政策</a>
+        <a href="plans.html">招生计划</a>
+        <a href="scores.html">往年分数</a>
+        <a class="is-active" href="majors.html">专业探索</a>
+        <a href="special.html">专题招生</a>
+        <a href="campus.html">校园生活</a>
+        <a href="faq.html">报考问答</a>
+        <a href="query.html">录取查询</a>
+        <a href="contact.html">联系我们</a>
+      </aside>
+
+      <article>
+        <h2 class="content-title">发现适合你的专业</h2>
+
+        <div class="major-overview">
+          <p>
+            江夏大学示例专业覆盖工学、理学、医学和人文社会科学等领域。
+            你可以先按兴趣浏览，再前往专业目录查看完整的培养信息。
+          </p>
+        </div>
+
+        <nav class="major-category-nav" aria-label="专业方向快捷导航">
+          <a href="#engineering">智能与工程</a>
+          <a href="#life-medicine">生命与医学</a>
+          <a href="#science-materials">数理与材料</a>
+          <a href="#humanities-design">人文与设计</a>
+        </nav>
+
+        <section id="engineering" class="major-section">
+          <div class="major-section-heading">
+            <h3>智能与工程</h3>
+            <span>面向智能技术、信息系统与先进制造</span>
+          </div>
+
+          <div class="explore-major-grid">
+            <article class="explore-major-card">
+              <span class="major-meta">工学 · 四年制</span>
+              <h4>人工智能</h4>
+              <p>学习机器学习、计算机视觉与自然语言处理，探索智能系统的设计与应用。</p>
+            </article>
+
+            <article class="explore-major-card">
+              <span class="major-meta">工学 · 四年制</span>
+              <h4>信息工程</h4>
+              <p>围绕通信、信号处理和智能感知，培养信息系统分析与工程实践能力。</p>
+            </article>
+
+            <article class="explore-major-card">
+              <span class="major-meta">工学 · 四年制</span>
+              <h4>智能制造工程</h4>
+              <p>融合机械、控制、传感和工业软件，认识现代制造系统的完整流程。</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="life-medicine" class="major-section">
+          <div class="major-section-heading">
+            <h3>生命与医学</h3>
+            <span>关注生命规律、健康科学与医工交叉</span>
+          </div>
+
+          <div class="explore-major-grid">
+            <article class="explore-major-card">
+              <span class="major-meta">理学 · 四年制</span>
+              <h4>生物信息学</h4>
+              <p>融合生命科学、统计学和计算机技术，从数据中认识复杂生命现象。</p>
+            </article>
+
+            <article class="explore-major-card">
+              <span class="major-meta">理学 · 四年制</span>
+              <h4>生物科学</h4>
+              <p>学习细胞、遗传、生态与分子生物学，打下生命科学研究基础。</p>
+            </article>
+
+            <article class="explore-major-card">
+              <span class="major-meta">医学 · 五年制</span>
+              <h4>临床医学</h4>
+              <p>系统学习医学基础与临床实践知识，培养面向健康服务的专业能力。</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="science-materials" class="major-section">
+          <div class="major-section-heading">
+            <h3>数理与材料</h3>
+            <span>用数据、模型和材料理解并解决现实问题</span>
+          </div>
+
+          <div class="explore-major-grid">
+            <article class="explore-major-card">
+              <span class="major-meta">理学 · 四年制</span>
+              <h4>数据科学与大数据技术</h4>
+              <p>学习数据处理、统计建模和智能分析，培养从数据中发现规律的能力。</p>
+            </article>
+
+            <article class="explore-major-card">
+              <span class="major-meta">理学 · 四年制</span>
+              <h4>应用统计学</h4>
+              <p>以概率统计和计算方法为基础，服务科学研究、社会调查与管理决策。</p>
+            </article>
+
+            <article class="explore-major-card">
+              <span class="major-meta">工学 · 四年制</span>
+              <h4>材料科学与工程</h4>
+              <p>研究材料结构、性能与制备方法，关注能源材料和先进制造应用。</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="humanities-design" class="major-section">
+          <div class="major-section-heading">
+            <h3>人文与设计</h3>
+            <span>连接文化表达、空间设计与组织管理</span>
+          </div>
+
+          <div class="explore-major-grid">
+            <article class="explore-major-card">
+              <span class="major-meta">文学 · 四年制</span>
+              <h4>数字人文</h4>
+              <p>将文学、历史和文化遗产研究与数字技术相结合，拓展人文表达方式。</p>
+            </article>
+
+            <article class="explore-major-card">
+              <span class="major-meta">工学 · 五年制</span>
+              <h4>建筑学</h4>
+              <p>学习建筑设计、城市空间与绿色建造，关注环境、文化与人的体验。</p>
+            </article>
+
+            <article class="explore-major-card">
+              <span class="major-meta">管理学 · 四年制</span>
+              <h4>经济管理试验班</h4>
+              <p>融合经济、管理和数据分析，培养面向组织运营与创新实践的能力。</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="major-actions" aria-label="专业相关招生资料">
+          <div>
+            <h3>继续了解专业与招生信息</h3>
+            <p>示例专业和招生数据均可根据后续设定继续修改。</p>
+          </div>
+
+          <div class="major-action-links">
+            <a href="program-catalog.html">查看专业目录</a>
+            <a href="plans.html">查看招生计划</a>
+            <a href="contact.html">咨询招生办公室</a>
+          </div>
+        </section>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="footer-brand">
+          <img src="../assets/logo-mark.svg" alt="">
+          <strong>江夏大学本科招生网</strong>
+        </div>
+
+        <p class="footer-note">
+          江夏大学为虚构学校，本网站仅用于辅助虚拟故事情节发展，不发布真实招生信息。
+        </p>
+      </div>
+
+      <div>
+        <h3>招生信息</h3>
+        <a href="policies.html">招生政策</a>
+        <a href="plans.html">招生计划</a>
+        <a href="scores.html">往年分数</a>
+        <a href="query.html">录取查询</a>
+      </div>
+
+      <div>
+        <h3>认识江夏</h3>
+        <a href="meet.html">学校简介</a>
+        <a href="majors.html">专业探索</a>
+        <a href="campus.html">校园生活</a>
+        <a href="faq.html">报考问答</a>
+      </div>
+
+      <div>
+        <h3>招生办公室</h3>
+        <a href="contact.html">咨询方式</a>
+        <p class="footer-note">
+          示例热线：318-01919810<br>
+          示例邮箱：example@jiangxia-university.org<br>
+          示例地址：江夏市大学路 1 号
+        </p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      © 2027 Jiangxia University Undergraduate Admissions · Demo only
+    </div>
+  </footer>
+
+  <aside class="mascot-helper" aria-label="报考助手">
+    <div class="helper-bubble">
+      你好，我们是江江和小夏！有报考问题可以先看
+      <a href="faq.html">常见问答</a>。
+    </div>
+
+    <img
+      src="../assets/江江小夏立绘.png"
+      alt="江江和小夏招生助手"
+    >
+  </aside>
+
+  <button
+    class="back-top"
+    type="button"
+    data-back-top
+    aria-label="返回顶部"
+  >
+    ↑
+  </button>
+
+  <script src="../js/admissions.js"></script>
+</body>
+</html>

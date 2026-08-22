@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- =========================================================
+       页面标题与简介
+       修改方法：将“江夏大学”与 description 中的文字替换为你的实际内容。
+       ========================================================= -->
+  <title>江夏大学 · Jiangxia University</title>
+  <meta
+    name="description"
+    content="江夏大学官方网站，一切内容纯属虚构，仅用于辅助虚拟故事情节。"
+  />
+
+  <!-- 浏览器标签页小图标：使用江夏大学正式校徽 SVG -->
+  <link rel="icon" href="assets/logo-mark.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <!-- 无障碍功能：键盘用户按 Tab 后可直接跳过导航进入正文 -->
+  <a class="skip-link" href="#main-content">跳至主要内容</a>
+
+  <!-- =========================================================
+       顶部服务栏
+       常见高校官网会把邮箱、信息门户、图书馆、English 等快捷入口放在这里。
+       修改链接：把 href="#" 改为真实网址即可。
+       ========================================================= -->
+  <div class="utility-bar">
+    <div class="container utility-inner">
+      <p class="utility-motto">明德 · 博学 · 求真 · 致远</p>
+      <nav class="utility-links" aria-label="快捷服务">
+        <a href="pages/portal/login.html?role=student">学生</a>
+        <a href="pages/portal/login.html?role=staff">教职工</a>
+        <a href="pages/portal/login.html?role=alumni">校友</a>
+        <a href="pages/portal/login.html?role=visitor">访客</a>
+        <span class="utility-divider" aria-hidden="true"></span>
+        <a href="pages/portal/login.html">信息门户</a>
+        <a href="pages/services/email.html">电子邮箱</a>
+        <a href="pages/en/index.html">English</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       主导航区
+       data-header 会被 JS 用于实现滚动后缩小、加阴影的效果。
+       ========================================================= -->
+  <header class="site-header" data-header>
+    <div class="container header-inner">
+      <!-- 网站标识：完全虚构、原创，不使用任何真实高校的校徽 -->
+      <a class="brand" href="index.html" aria-label="江夏大学首页">
+        <img src="assets/logo-mark.svg" alt="江夏大学校徽" />
+        <span class="brand-text">
+          <strong>江夏大学</strong>
+          <small>JIANGXIA UNIVERSITY</small>
+        </span>
+      </a>
+
+      <!-- 桌面端主导航。下拉菜单内容可直接增删。 -->
+      <nav class="main-nav" aria-label="主导航">
+        <ul>
+          <li class="nav-item has-dropdown">
+            <a href="pages/about/index.html">学校概况</a>
+            <div class="dropdown-panel">
+              <a href="pages/about/index.html#introduction">学校简介</a>
+              <a href="pages/about/index.html#history">历史沿革</a>
+              <a href="pages/about/index.html#leaders">现任领导</a>
+              <a href="pages/about/index.html#organization">组织机构</a>
+              <a href="pages/about/index.html#culture">校园文化</a>
+              <a href="pages/about/index.html#identity">标识系统</a>
+            </div>
+          </li>
+          <li class="nav-item has-dropdown">
+            <a href="pages/news/index.html">新闻资讯</a>
+            <div class="dropdown-panel">
+              <a href="pages/news/campus-news.html">江大要闻</a>
+              <a href="pages/news/media.html">媒体动态</a>
+              <a href="pages/news/vitality.html">活力江大</a>
+            </div>
+          </li>
+          <li class="nav-item has-dropdown">
+            <a href="pages/schools/index.html">院系设置</a>
+          </li>
+          <li class="nav-item"><a href="pages/education/index.html">教育教学</a></li>
+          <li class="nav-item"><a href="pages/research/index.html">科学研究</a></li>
+          <li class="nav-item"><a href="pages/admissions/index.html">招生就业</a></li>
+          <li class="nav-item"><a href="pages/cooperation/index.html">合作交流</a></li>
+          <li class="nav-item"><a href="pages/services/index.html">校园服务</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <!-- 搜索按钮打开全屏搜索层 -->
+        <button class="icon-button" type="button" data-search-open aria-label="打开站内搜索">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="6.5"></circle>
+            <path d="m16 16 4 4"></path>
+          </svg>
+        </button>
+
+        <!-- 移动端菜单按钮；桌面端自动隐藏 -->
+        <button
+          class="menu-button"
+          type="button"
+          data-menu-toggle
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <span></span><span></span><span></span>
+          <span class="sr-only">打开移动端菜单</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================
+       移动端抽屉菜单
+       ========================================================= -->
+  <aside class="mobile-menu" id="mobile-menu" data-mobile-menu aria-hidden="true">
+    <div class="mobile-menu-head">
+      <span>网站导航</span>
+      <button type="button" data-menu-close aria-label="关闭移动端菜单">×</button>
+    </div>
+    <nav aria-label="移动端导航">
+      <a href="pages/about/index.html">学校概况</a>
+      <a href="pages/news/campus-news.html">江大要闻</a>
+      <a href="pages/news/media.html">媒体动态</a>
+      <a href="pages/news/vitality.html">活力江大</a>
+      <a href="pages/news/research-news.html">学术成果</a>
+      <a href="pages/news/multimedia.html">融媒印象</a>
+      <a href="pages/about/index.html#introduction">数字校园</a>
+      <a href="pages/news/people.html">风云人物</a>
+      <a href="pages/admissions/index.html">招生就业</a>
+      <a href="pages/services/index.html">校园服务</a>
+    </nav>
+    <div class="mobile-menu-foot">
+      <a href="pages/portal/login.html">信息门户</a>
+      <a href="pages/en/index.html">English</a>
+    </div>
+  </aside>
+  <div class="page-overlay" data-page-overlay></div>
+
+  <main id="main-content">
+    <!-- =======================================================
+         首屏轮播 Hero
+         替换图片：修改每个 .hero-slide 的 style 中 url(...)。
+         替换标题：修改 .hero-kicker、h1、.hero-description。
+         增减轮播：复制/删除一个 article，同时复制/删除下方对应圆点按钮。
+         ======================================================= -->
+    <section class="hero" id="top" aria-label="焦点新闻轮播" data-slider>
+      <div class="hero-slides">
+        <article
+          class="hero-slide is-active"
+          style="background-image: url('assets/招生宣传.png')"
+          data-slide
+        >
+          <div class="hero-shade"></div>
+          <div class="container hero-content">
+            <p class="hero-kicker">Jiangxia University · 2026</p>
+            <h1>向江而立，向新而行</h1>
+            <p class="hero-description">
+              欢迎报考江夏大学，让每一次探索都成为改变世界的起点。
+            </p>
+            <a class="button button-light" href="pages/admissions/undergraduate-admissions/index.html">
+              走进江大
+              <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </article>
+
+        <article
+          class="hero-slide"
+          style="background-image: url('assets/大礼堂.png')"
+          data-slide
+        >
+          <div class="hero-shade"></div>
+          <div class="container hero-content">
+            <p class="hero-kicker">Annual Promo Video</p>
+            <h1>江夏大学年度宣传片</h1>
+            <p class="hero-description">
+              专业团队制作，以影像形式展现江大之美。
+            </p>
+            <a class="button button-light"type="button" data-video-card aria-haspopup="dialog">
+              一键观看
+              <span aria-hidden="true">▶</span>
+            </a>
+          </div>
+        </article>
+
+        <article
+          class="hero-slide hero-slide-image-only"
+          style="background-image: url('assets/红色宣传.png')"
+          data-slide
+        ></article>
+      </div>
+
+      <!-- 轮播左右按钮 -->
+      <div class="hero-arrows container" aria-label="轮播控制">
+        <button type="button" data-slider-prev aria-label="上一张">←</button>
+        <button type="button" data-slider-next aria-label="下一张">→</button>
+      </div>
+
+      <!-- 轮播圆点。aria-label 可按实际内容修改。 -->
+      <div class="hero-dots" role="tablist" aria-label="选择焦点图">
+        <button class="is-active" type="button" data-slide-to="0" aria-label="查看第一张"></button>
+        <button type="button" data-slide-to="1" aria-label="查看第二张"></button>
+        <button type="button" data-slide-to="2" aria-label="查看第三张"></button>
+      </div>
+
+      <div class="scroll-hint" aria-hidden="true">
+        <span>JIANGXIA</span>
+        <i></i>
+      </div>
+    </section>
+
+    <!-- 高频入口：模仿高校官网常见的首屏快捷服务，但使用原创样式 -->
+    <section class="quick-links" aria-label="常用服务">
+      <div class="container quick-links-grid">
+        <a href="pages/admissions/undergraduate-admissions/index.html">
+          <span class="quick-icon">招</span>
+          <span><strong>本科招生</strong><small>Undergraduate</small></span>
+        </a>
+        <a href="pages/admissions/jiangxia-graduate-admissions/index.html">
+          <span class="quick-icon">研</span>
+          <span><strong>研究生招生</strong><small>Graduate</small></span>
+        </a>
+        <a href="pages/admissions/careers.html">
+          <span class="quick-icon">人</span>
+          <span><strong>人才招聘</strong><small>Careers</small></span>
+        </a>
+        <a href="pages/services/library.html">
+          <span class="quick-icon">图</span>
+          <span><strong>图书馆</strong><small>Library</small></span>
+        </a>
+        <a href="pages/services/ehall.html">
+          <span class="quick-icon">服</span>
+          <span><strong>办事大厅</strong><small>E-Hall</small></span>
+        </a>
+      </div>
+    </section>
+
+    <!-- =======================================================
+         江大要闻
+         左侧为一条主新闻，右侧为列表，适合呈现学校最重要的新闻。
+         data-reveal 用于滚动进入视口时执行淡入动画。
+         ======================================================= -->
+    <section class="section news-section" id="news">
+      <div class="container">
+        <header class="section-heading" data-reveal>
+          <div>
+            <p class="eyebrow">JIANGXIA NEWS</p>
+            <h2>江大要闻</h2>
+          </div>
+          <a class="more-link" href="pages/news/campus-news.html">查看更多 <span>→</span></a>
+        </header>
+
+        <div class="news-layout">
+          <!-- 主新闻：替换图片路径、日期、标题和摘要即可 -->
+          <article class="lead-news" data-reveal>
+            <a class="lead-news-image image-zoom" href="pages/news/articles/high-quality-development.html">
+              <img src="assets/会议图片.png" alt="会议图片" />
+              <span class="image-label">头条</span>
+            </a>
+            <div class="lead-news-copy">
+              <time datetime="2026-07-16">2026.07.16</time>
+              <h3><a href="pages/news/articles/high-quality-development.html">江夏大学召开高质量发展大会，共绘面向未来的育人新图景</a></h3>
+              <p>
+                学校围绕拔尖创新人才培养、交叉学科建设与开放合作展开深入研讨，发布新一轮发展行动计划。
+              </p>
+            </div>
+          </article>
+
+          <!-- 右侧新闻列表。复制一个 article 可新增新闻。 -->
+          <div class="news-list" data-reveal>
+            <article class="news-list-item">
+              <time datetime="2026-07-12"><strong>12</strong><span>2026.07</span></time>
+              <div>
+                <p class="news-tag">人才培养</p>
+                <h3><a href="pages/news/articles/youth-scholar-forum.html">首届“江海青年学者论坛”汇聚全球青年人才</a></h3>
+                <p>跨学科对话聚焦人工智能、生命健康与绿色发展</p>
+              </div>
+            </article>
+            <article class="news-list-item">
+              <time datetime="2026-07-08"><strong>08</strong><span>2026.07</span></time>
+              <div>
+                <p class="news-tag">校园新闻</p>
+                <h3><a href="pages/news/articles/graduation-2026.html">2026届毕业典礼：从江夏出发，奔赴山海</a></h3>
+                <p>毕业生代表分享求学故事，全校师生共同见证青春启航</p>
+              </div>
+            </article>
+            <article class="news-list-item">
+              <time datetime="2026-07-02"><strong>02</strong><span>2026.07</span></time>
+              <div>
+                <p class="news-tag">合作交流</p>
+                <h3><a href="pages/news/articles/joint-innovation-center.html">江夏大学与国际合作伙伴共建联合创新中心</a></h3>
+                <p>中心聚焦于多个前沿领域，致力于高水平科研合作</p>
+              </div>
+            </article>
+            <article class="news-list-item">
+              <time datetime="2026-06-28"><strong>28</strong><span>2026.06</span></time>
+              <div>
+                <p class="news-tag">荣誉成果</p>
+                <h3><a href="pages/news/articles/student-innovation-awards.html">我校学子在全国大学生创新竞赛中再创佳绩</a></h3>
+                <p>多个项目在智能技术、文化创意与公共健康赛道获奖</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================
+         媒体动态
+         用“媒体名称 + 标题”的简洁排版强化权威感。
+         ======================================================= -->
+    <section class="section media-section" id="media">
+      <div class="container">
+        <header class="section-heading section-heading-light" data-reveal>
+          <div>
+            <p class="eyebrow">JXU IN THE MEDIA</p>
+            <h2>媒体动态</h2>
+          </div>
+          <a class="more-link" href="pages/news/media.html">查看更多 <span>→</span></a>
+        </header>
+
+        <div class="media-grid">
+          <a class="media-card" href="pages/news/articles/media-basic-research.html" data-reveal>
+            <span class="media-source">车商日报</span>
+            <h3>以交叉融合释放高校基础研究新动能</h3>
+            <p>聚焦江夏大学建设开放式科研平台与科研中心的探索与实践</p>
+            <time datetime="2026-07-14">2026.07.09</time>
+          </a>
+          <a class="media-card" href="pages/news/articles/media-social-practice.html" data-reveal>
+            <span class="media-source">栋楠社</span>
+            <h3>结合热点问题，让社会实践与时代并行</h3>
+            <p>江夏大学持续推动新兴项目产业与社会实践深度融合</p>
+            <time datetime="2026-07-09">2026.06.10</time>
+          </a>
+          <a class="media-card media-card-featured" href="pages/news/articles/media-city-culture.html" data-reveal>
+            <span class="media-source">虎踞日报</span>
+            <h3>一座校园，如何成为城市文化的新客厅</h3>
+            <p>公共讲座、博物馆与艺术季让大学文化走向更广阔的人群</p>
+            <time datetime="2026-07-05">2026.06.01</time>
+          </a>
+          <a class="media-card" href="pages/news/articles/media-undergraduate-mentors.html" data-reveal>
+            <span class="media-source">龙蟠教育报</span>
+            <h3>本科生导师：让本科生参与到科研项目中来</h3>
+            <p>多元导师与跨专业社区共同支持学生全面发展</p>
+            <time datetime="2026-06-30">2026.05.12</time>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================
+         活力江大
+         图片卡片适合社团、活动、体育、志愿服务等校园内容。
+         ======================================================= -->
+    <section class="section vitality-section" id="vitality">
+      <div class="container">
+        <header class="section-heading" data-reveal>
+          <div>
+            <p class="eyebrow">VIBRANT JXU</p>
+            <h2>活力江大</h2>
+          </div>
+          <a class="more-link" href="pages/news/vitality.html">查看更多 <span>→</span></a>
+        </header>
+
+        <div class="vitality-grid">
+          <article class="story-card story-card-large" data-reveal>
+            <a class="story-image image-zoom" href="pages/news/articles/mascot-design.html">
+              <img src="assets/江江小夏玩偶.png" alt="吉祥物玩偶照片" />
+            </a>
+            <div class="story-copy">
+              <p class="story-meta">校园文化 · 06.22</p>
+              <h3><a href="pages/news/articles/mascot-design.html">校园吉祥物周边设计大赛最终结果颁布</a></h3>
+              <p>可爱吉祥物“江江”“小夏”玩偶挂件出炉</p>
+            </div>
+          </article>
+
+          <article class="story-card" data-reveal>
+            <a class="story-image image-zoom" href="pages/news/articles/relay-race.html">
+              <img src="assets/520接力赛.png" alt="520接力赛实拍照片" />
+            </a>
+            <div class="story-copy">
+              <p class="story-meta">体育江大 · 05.20</p>
+              <h3><a href="pages/news/articles/relay-race.html">奔跑吧，江大！“520”接力赛火热进行中</a></h3>
+            </div>
+          </article>
+
+          <article class="story-card" data-reveal>
+            <a class="story-image image-zoom" href="pages/news/articles/top-singers.html">
+              <img src="assets/十佳歌手.png" alt="十佳歌手大赛海报" />
+            </a>
+            <div class="story-copy">
+              <p class="story-meta">十佳歌手大赛 · 04.11</p>
+              <h3><a href="pages/news/articles/top-singers.html">用歌声展示江大人的魅力与情怀</a></h3>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================
+         学术成果
+         深色背景与绿色发光装饰用于营造“前沿科研”氛围。
+         ======================================================= -->
+    <section class="section academics-section" id="academics">
+      <div class="academics-orb academics-orb-one" aria-hidden="true"></div>
+      <div class="academics-orb academics-orb-two" aria-hidden="true"></div>
+
+      <div class="container academics-inner">
+        <header class="section-heading section-heading-light" data-reveal>
+          <div>
+            <p class="eyebrow">RESEARCH & DISCOVERY</p>
+            <h2>学术成果</h2>
+          </div>
+          <a class="more-link" href="pages/research/index.html">进入科研网 <span>→</span></a>
+        </header>
+
+        <div class="academics-layout">
+          <article class="academic-feature" data-reveal>
+            <a class="academic-feature-image image-zoom" href="pages/research/articles/drug-delivery-agent.html">
+              <img src="assets/智能体示意.png" alt="药物递送智能体示意图" />
+            </a>
+            <div class="academic-feature-copy">
+              <span>前沿突破</span>
+              <h3><a href="pages/research/articles/drug-delivery-agent.html">江夏大学团队在医工交叉智能体领域取得新进展</a></h3>
+              <p>
+                研究提出一种新型药物递送智能体，旨在甄选出最佳的药物递送路径
+              </p>
+              <a class="text-link" href="pages/research/articles/drug-delivery-agent.html">阅读成果全文 →</a>
+            </div>
+          </article>
+
+          <div class="academic-list" data-reveal>
+            <a href="pages/research/articles/eeg-intervention.html">
+              <span class="academic-index">01</span>
+              <div>
+                <p>生物医学</p>
+                <h3>交叉团队揭示脑电波的可干预性</h3>
+              </div>
+              <time>07.11</time>
+            </a>
+            <a href="pages/research/articles/multimodal-model.html">
+              <span class="academic-index">02</span>
+              <div>
+                <p>人工智能</p>
+                <h3>多模态模型在科学发现任务中实现性能提升</h3>
+              </div>
+              <time>07.04</time>
+            </a>
+            <a href="pages/research/articles/digital-humanities.html">
+              <span class="academic-index">03</span>
+              <div>
+                <p>人文社科</p>
+                <h3>数字人文平台重构区域文化遗产研究路径</h3>
+              </div>
+              <time>06.26</time>
+            </a>
+            <a href="pages/research/articles/green-city.html">
+              <span class="academic-index">04</span>
+              <div>
+                <p>城市治理</p>
+                <h3>面向绿色城市的公共空间评估体系发布</h3>
+              </div>
+              <time>06.18</time>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================
+         融媒印象
+         采用拼贴式图片墙，适合视频、摄影、公众号、短视频等内容。
+         data-video-card 点击后会弹出一个演示视频窗口。
+         ======================================================= -->
+    <section class="section multimedia-section" id="multimedia">
+      <div class="container">
+        <header class="section-heading" data-reveal>
+          <div>
+            <p class="eyebrow">JXU MULTIMEDIA</p>
+            <h2>融媒印象</h2>
+          </div>
+          <div class="channel-links" aria-label="融媒体平台">
+            <a href="#" data-placeholder="微信公众号得过企业验证 先不搞了">微信</a>
+            <a href="https://weibo.com/u/7931560081">微博</a>
+            <a href="#" data-placeholder="视频号也很麻烦 先不搞了">视频号</a>
+            <a href="https://xhslink.cn/m/9zdZ7yYVJj6">小红书</a>
+          </div>
+        </header>
+
+        <div class="mosaic-grid">
+          <button class="mosaic-card mosaic-card-wide" type="button" data-video-card data-reveal>
+            <img src="assets/大礼堂.png" alt="江夏大学年度宣传片封面" />
+            <span class="mosaic-overlay"></span>
+            <span class="play-button" aria-hidden="true">▶</span>
+            <span class="mosaic-caption">
+              <small>VIDEO · 00'36''</small>
+              <strong>江夏大学年度宣传片</strong>
+            </span>
+          </button>
+
+          <a class="mosaic-card" href="pages/news/articles/campus-seasons.html" data-reveal>
+            <img src="assets/秋景.png" alt="校园四季摄影图片" />
+            <span class="mosaic-overlay"></span>
+            <span class="mosaic-caption"><small>PHOTO</small><strong>江大四季</strong></span>
+          </a>
+
+          <a class="mosaic-card" href="pages/news/articles/a-day-at-jxu.html" data-reveal>
+            <img src="assets/街景.png" alt="学生实拍校园景色" />
+            <span class="mosaic-overlay"></span>
+            <span class="mosaic-caption"><small>STORY</small><strong>我的江大一天</strong></span>
+          </a>
+
+          <a class="mosaic-card mosaic-card-tall" href="pages/news/articles/campus-light.html" data-reveal>
+            <img src="assets/夕阳.jpg" alt="校园中的夕阳" />
+            <span class="mosaic-overlay"></span>
+            <span class="mosaic-caption"><small>SHADE</small><strong>光影中的校园</strong></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================
+         数字校园
+         data-count 保存动画最终值；JS 会在进入视口时从 0 递增。
+         data-suffix 保存单位，示例：+、万、亩。
+         ======================================================= -->
+    <section class="campus-data-section" id="campus-data">
+      <div class="campus-data-bg" aria-hidden="true"></div>
+      <div class="container campus-data-inner">
+        <header class="data-heading" data-reveal>
+          <p class="eyebrow">JXU AT A GLANCE</p>
+          <h2>数字校园</h2>
+          <p>百年老校，历史悠久</p>
+        </header>
+
+        <div class="data-grid" data-counter-group>
+          <article class="data-item" data-reveal>
+            <strong><span data-count="107">0</span><em>年</em></strong>
+            <p>办学历史</p>
+          </article>
+          <article class="data-item" data-reveal>
+            <strong><span data-count="36">0</span><em>个</em></strong>
+            <p>院系与书院</p>
+          </article>
+          <article class="data-item" data-reveal>
+            <strong><span data-count="48">0</span><em>个</em></strong>
+            <p>本科专业</p>
+          </article>
+          <article class="data-item" data-reveal>
+            <strong><span data-count="42000">0</span><em>+</em></strong>
+            <p>在校学生</p>
+          </article>
+          <article class="data-item" data-reveal>
+            <strong><span data-count="5600">0</span><em>亩</em></strong>
+            <p>校园面积</p>
+          </article>
+          <article class="data-item" data-reveal>
+            <strong><span data-count="13">0</span><em>个</em></strong>
+            <p>国家级科研平台</p>
+          </article>
+          <article class="data-item" data-reveal>
+            <strong><span data-count="67">0</span><em>+</em></strong>
+            <p>全球合作伙伴</p>
+          </article>
+          <article class="data-item" data-reveal>
+            <strong><span data-count="6">0</span><em>个</em></strong>
+            <p>ESI 前 1% 学科</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================
+         风云人物
+         左侧按钮切换人物，右侧图片与文字由 JS 同步切换。
+         添加人物时，需要同时新增 data-person-tab 与 data-person-panel，
+         两者的 data-person 值必须一致。
+         ======================================================= -->
+    <section class="section people-section" id="people">
+      <div class="container">
+        <header class="section-heading" data-reveal>
+          <div>
+            <p class="eyebrow">PEOPLE OF JXU</p>
+            <h2>风云人物</h2>
+          </div>
+          <a class="more-link" href="pages/news/people.html">查看更多 <span>→</span></a>
+        </header>
+
+        <div class="people-layout" data-people-switcher>
+          <div class="people-tabs" role="tablist" aria-label="选择人物" data-reveal>
+            <button class="is-active" type="button" role="tab" data-person-tab data-person="person-1">
+              <span>01</span>
+              <strong>马行远</strong>
+              <small>材料科学家</small>
+            </button>
+            <button type="button" role="tab" data-person-tab data-person="person-2">
+              <span>02</span>
+              <strong>何沐清</strong>
+              <small>人文学者</small>
+            </button>
+            <button type="button" role="tab" data-person-tab data-person="person-3">
+              <span>03</span>
+              <strong>周宇阳</strong>
+              <small>青年校友</small>
+            </button>
+          </div>
+
+          <div class="people-panels" data-reveal>
+            <article class="person-panel is-active" data-person-panel data-person="person-1">
+              <div class="person-photo image-zoom">
+                <img src="assets/马行远.png" alt="马行远宣传照" />
+              </div>
+              <div class="person-copy">
+                <p class="person-role">材料科学家 · 江夏大学教授</p>
+                <h3>马行远：把实验室里的微小发现，变成面向未来的真实改变</h3>
+                <blockquote>“真正有价值的研究，既要仰望星空，也要能回应脚下的土地。”</blockquote>
+                <p>
+                  长期从事绿色能源材料研究，带领跨学科团队探索基础科学与产业需求之间的新连接。
+                </p>
+                <a class="text-link" href="pages/news/people/ma-xingyuan.html">阅读人物故事 →</a>
+              </div>
+            </article>
+
+            <article class="person-panel" data-person-panel data-person="person-2">
+              <div class="person-photo image-zoom">
+                <img src="assets/何沐清.png" alt="何沐清宣传照" />
+              </div>
+              <div class="person-copy">
+                <p class="person-role">人文学者 · 历史文化学院</p>
+                <h3>何沐清：在古老文献与数字技术之间重建文化记忆</h3>
+                <blockquote>“人文学科让我们知道从哪里来，也帮助我们判断将走向哪里。”</blockquote>
+                <p>
+                  她推动古籍整理、城市记忆与数字人文交叉融合，让传统文化以更开放的方式走向公众。
+                </p>
+                <a class="text-link" href="pages/news/people/he-muqing.html">阅读人物故事 →</a>
+              </div>
+            </article>
+
+            <article class="person-panel" data-person-panel data-person="person-3">
+              <div class="person-photo image-zoom">
+                <img src="assets/周宇阳.png" alt="周宇阳宣传照" />
+              </div>
+              <div class="person-copy">
+                <p class="person-role">青年校友 · 公益创业者</p>
+                <h3>周宇阳：让技术跨越信息鸿沟，为乡村教育带来更多可能</h3>
+                <blockquote>“大学教会我的，不只是解决问题，更是看见那些尚未被看见的问题。”</blockquote>
+                <p>
+                  毕业后发起公益教育项目，以轻量化数字工具服务偏远地区学校与一线教师。
+                </p>
+                <a class="text-link" href="pages/news/people/zhou-yuyang.html">阅读人物故事 →</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 校园专题横幅，可替换为校庆、招生季、学术论坛等主题 -->
+    <section class="feature-banner" data-reveal>
+      <div class="container feature-banner-inner">
+        <div>
+          <p>OPEN CAMPUS · 2026</p>
+          <h2>在江夏，遇见你想成为的自己</h2>
+        </div>
+        <a class="button button-outline-light" href="pages/admissions/open-day.html">校园开放日 →</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================
+       页脚 Footer
+       所有地址、电话、备案信息都是占位内容。
+       正式上线时请替换，并根据当地法规完成真实备案。
+       ========================================================= -->
+  <footer class="site-footer">
+    <div class="container footer-main">
+      <div class="footer-brand">
+        <a class="brand brand-footer" href="index.html">
+          <img src="assets/logo-mark.svg" alt="" />
+          <span class="brand-text">
+            <strong>江夏大学</strong>
+            <small>JIANGXIA UNIVERSITY</small>
+          </span>
+        </a>
+        <p>
+          本页面为虚拟故事辅助页面，“江夏大学”为虚构学校，与任何真实高校无隶属或合作关系。
+        </p>
+      </div>
+
+      <div class="footer-links">
+        <div>
+          <h3>快速链接</h3>
+          <a href="pages/about/index.html">学校概况</a>
+          <a href="pages/about/index.html#organization">机构设置</a>
+          <a href="pages/admissions/careers.html">人才招聘</a>
+          <a href="pages/services/disclosure.html">信息公开</a>
+        </div>
+        <div>
+          <h3>校园服务</h3>
+          <a href="pages/services/ehall.html">办事大厅</a>
+          <a href="pages/services/library.html">图书馆</a>
+          <a href="pages/services/jiangxia-campus-map/index.html">校园地图</a>
+          <a href="pages/services/calendar.html">校历</a>
+        </div>
+        <div>
+          <h3>联系我们</h3>
+          <p>地址：江夏市大学路 1 号（虚构）</p>
+          <p>邮编：114514</p>
+          <p>电话：318-01919810</p>
+          <p>邮箱：example@jiangxia-university.org</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p>© 2026 Jiangxia University. Demo only.</p>
+        <p>虚构网站 · 请勿用于冒充真实教育机构</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================================================
+       全屏搜索层
+       当前只做前端交互演示，不连接数据库。
+       接入真实搜索时，可把 form 的 action 改为站内搜索接口地址。
+       ========================================================= -->
+  <div class="search-modal" data-search-modal aria-hidden="true">
+    <button class="search-close" type="button" data-search-close aria-label="关闭搜索">×</button>
+    <div class="search-dialog" role="dialog" aria-modal="true" aria-labelledby="search-title">
+      <p class="eyebrow">SITE SEARCH</p>
+      <h2 id="search-title">搜索江夏大学网站</h2>
+      <form action="pages/search.html" method="get">
+        <label class="sr-only" for="site-search">请输入搜索关键词</label>
+        <input id="site-search" name="q" type="search" placeholder="输入关键词，例如：招生、图书馆、人工智能" />
+        <button type="submit">搜索</button>
+      </form>
+      <p class="search-note">热门搜索：本科招生　研究生院　校园地图　学术讲座</p>
+    </div>
+  </div>
+
+  <!-- 融媒视频演示弹窗：替换为真实 video 或 iframe 即可 -->
+  <div class="video-modal" data-video-modal aria-hidden="true">
+    <button class="video-close" type="button" data-video-close aria-label="关闭视频">×</button>
+    <div class="video-dialog" role="dialog" aria-modal="true" aria-label="江夏大学年度宣传片播放窗口">
+      <video class="campus-video" data-campus-video controls playsinline preload="metadata" poster="assets/大礼堂.png">
+        <source src="assets/video/campus-promo.mp4" type="video/mp4"/>
+        你的浏览器暂不支持 HTML5 视频播放。
+      </video>
+    </div>
+  </div>
+
+  <!-- 返回顶部按钮 -->
+  <button class="back-to-top" type="button" data-back-to-top aria-label="返回页面顶部">↑</button>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

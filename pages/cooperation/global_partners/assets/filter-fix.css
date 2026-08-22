@@ -1,0 +1,8 @@
+/*
+ * 全球伙伴导览页筛选兼容修复。
+ * partner-card 原本使用 display:flex，部分浏览器不会让 hidden 属性覆盖它。
+ */
+
+.partner-card[hidden] {
+  display: none !important;
+}

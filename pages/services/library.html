@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>图书馆系统维护中 · 江夏大学</title>
+  <meta
+    name="description"
+    content="江夏大学图书馆系统维护提示页面。"
+  >
+
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <style>
+    :root {
+      --brand-dark: #073e43;
+      --brand: #197781;
+      --brand-light: #3aa9aa;
+      --brand-pale: #eaf6f3;
+      --paper: #ffffff;
+      --background: #f4f8f7;
+      --text: #102326;
+      --text-light: #637477;
+      --line: #d9e7e4;
+      --gold: #e7b44c;
+      --serif: "Noto Serif SC", "Source Han Serif SC", "Songti SC", STSong, serif;
+      --sans: "Noto Sans SC", "Source Han Sans SC", "Microsoft YaHei", Arial, sans-serif;
+      --shadow: 0 24px 70px rgba(7, 62, 67, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      min-height: 100%;
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 12% 18%, rgba(58, 169, 170, 0.10), transparent 28%),
+        radial-gradient(circle at 88% 78%, rgba(231, 180, 76, 0.09), transparent 25%),
+        var(--background);
+      font-family: var(--sans);
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .container {
+      width: min(calc(100% - 40px), 1180px);
+      margin-inline: auto;
+    }
+
+    /* 顶部校训条 */
+    .topbar {
+      color: rgba(255, 255, 255, 0.82);
+      background: var(--brand-dark);
+      font-size: 12px;
+      letter-spacing: 0.16em;
+    }
+
+    .topbar .container {
+      display: flex;
+      min-height: 36px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .topbar a:hover {
+      color: #ffffff;
+    }
+
+    /* 网站页眉 */
+    .site-header {
+      background: rgba(255, 255, 255, 0.96);
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 8px 28px rgba(7, 62, 67, 0.05);
+    }
+
+    .header-inner {
+      display: flex;
+      min-height: 92px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .header-label {
+      padding-left: 24px;
+      color: var(--brand-dark);
+      border-left: 1px solid var(--line);
+      font-family: var(--serif);
+      font-size: 21px;
+    }
+
+    /* 维护提示主体 */
+    main {
+      display: grid;
+      min-height: calc(100vh - 235px);
+      place-items: center;
+      padding: 72px 0;
+    }
+
+    .maintenance-card {
+      position: relative;
+      width: min(100%, 900px);
+      padding: 62px 70px 52px;
+      overflow: hidden;
+      text-align: center;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.96);
+      box-shadow: var(--shadow);
+      margin: 0 auto;
+    }
+
+    .maintenance-card::before {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      height: 6px;
+      content: "";
+      background: linear-gradient(90deg, var(--brand-dark), var(--brand-light));
+    }
+
+    .book-icon {
+      position: relative;
+      width: 96px;
+      height: 76px;
+      margin: 0 auto 25px;
+    }
+
+    .book-icon::before,
+    .book-icon::after {
+      position: absolute;
+      top: 0;
+      width: 47px;
+      height: 68px;
+      content: "";
+      border: 2px solid var(--brand);
+      background: var(--brand-pale);
+    }
+
+    .book-icon::before {
+      left: 0;
+      border-radius: 18px 2px 2px 5px;
+      transform: skewY(7deg);
+    }
+
+    .book-icon::after {
+      right: 0;
+      border-radius: 2px 18px 5px 2px;
+      transform: skewY(-7deg);
+    }
+
+    .book-line {
+      position: absolute;
+      top: 8px;
+      bottom: 0;
+      left: 50%;
+      z-index: 2;
+      width: 2px;
+      background: var(--brand);
+      transform: translateX(-50%);
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 18px;
+      padding: 6px 13px;
+      color: #6b520d;
+      border: 1px solid #ecd89e;
+      border-radius: 999px;
+      background: #fff7df;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+      animation: pulse 1.8s ease-in-out infinite;
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--brand-dark);
+      font-family: var(--serif);
+      font-size: clamp(38px, 6vw, 62px);
+      letter-spacing: 0.05em;
+      line-height: 1.25;
+    }
+
+    .description {
+      max-width: 650px;
+      margin: 22px auto 0;
+      color: var(--text-light);
+      font-size: 16px;
+    }
+
+    .quiet-note {
+      margin: 9px 0 0;
+      color: #93a0a2;
+      font-size: 11px;
+    }
+
+    .service-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 34px;
+    }
+
+    .service-item {
+      padding: 18px 12px;
+      border: 1px solid var(--line);
+      background: var(--brand-pale);
+    }
+
+    .service-item strong {
+      display: block;
+      color: var(--brand-dark);
+      font-size: 14px;
+    }
+
+    .service-item span {
+      display: block;
+      margin-top: 3px;
+      color: var(--text-light);
+      font-size: 11px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 11px;
+      margin-top: 32px;
+    }
+
+    .button {
+      display: inline-flex;
+      min-height: 46px;
+      align-items: center;
+      justify-content: center;
+      padding: 0 22px;
+      border: 1px solid var(--line);
+      background: #ffffff;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 700;
+      transition: transform 220ms ease, background 220ms ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button-primary {
+      color: #ffffff;
+      border-color: var(--brand);
+      background: var(--brand);
+    }
+
+    .button-primary:hover {
+      background: var(--brand-dark);
+    }
+
+    .site-footer {
+      color: rgba(255, 255, 255, 0.68);
+      background: var(--brand-dark);
+      font-size: 12px;
+    }
+
+    .footer-inner {
+      display: flex;
+      min-height: 70px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        opacity: 0.4;
+        transform: scale(0.85);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1.15);
+      }
+    }
+
+    @media (max-width: 700px) {
+      .header-label {
+        display: none;
+      }
+
+      main {
+        padding: 40px 0;
+      }
+
+      .maintenance-card {
+        padding: 48px 24px 38px;
+      }
+
+      .service-list {
+        grid-template-columns: 1fr;
+      }
+
+      .topbar .container,
+      .footer-inner {
+        justify-content: center;
+        text-align: center;
+      }
+
+      .topbar span,
+      .footer-inner span:last-child {
+        display: none;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+
+    /* 保留深绿色校训条 */
+.library-page .topbar {
+  margin: 0 !important;
+}
+
+/* 去掉校训条与白色页眉之间的空白 */
+.library-page .topbar + .site-header,
+.library-page .site-header {
+  position: relative !important;
+  top: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  left: auto !important;
+
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  transform: none !important;
+}
+
+/* 防止官网原样式用伪元素生成浅色装饰带 */
+.library-page .site-header::before,
+.library-page .site-header::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* 如果页面中存在页眉占位元素，则将它隐藏 */
+.library-page .header-spacer,
+.library-page .nav-placeholder,
+.library-page .header-placeholder {
+  display: none !important;
+  height: 0 !important;
+}
+  </style>
+</head>
+
+<body class="library-page">
+  <!-- 顶部信息栏 -->
+  <div class="topbar">
+    <div class="container">
+      <span>明德 · 博学 · 求真 · 致远</span>
+      <a href="../../index.html">返回江夏大学主页</a>
+    </div>
+  </div>
+
+  <!-- 网站页眉 -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a
+        class="brand"
+        href="../../index.html"
+        aria-label="江夏大学首页"
+      >
+        <img
+          src="../../assets/logo-mark.svg"
+          alt="江夏大学校徽"
+        >
+
+        <span class="brand-text">
+          <strong>江夏大学</strong>
+          <small>JIANGXIA UNIVERSITY</small>
+        </span>
+      </a>
+
+      <div class="header-label">图书馆</div>
+    </div>
+  </header>
+</body>
+
+  <!-- 系统维护提示 -->
+  <main>
+    <div class="container">
+      <section class="maintenance-card" aria-labelledby="maintenance-title">
+        <div class="book-icon" aria-hidden="true">
+          <span class="book-line"></span>
+        </div>
+
+        <div class="status">
+          <span class="status-dot" aria-hidden="true"></span>
+          系统维护中
+        </div>
+
+        <h1 id="maintenance-title">图书馆系统维护中</h1>
+
+        <p class="description">
+          为进一步提升馆藏检索与数字资源服务质量，图书馆系统正在进行维护升级。
+          维护期间，部分在线服务可能暂时无法访问，敬请谅解。
+        </p>
+
+        <p class="quiet-note">（之后肯定会维护好的，嗯）</p>
+
+        <div class="service-list" aria-label="受影响的服务">
+          <div class="service-item">
+            <strong>馆藏检索</strong>
+            <span>暂时无法使用</span>
+          </div>
+
+          <div class="service-item">
+            <strong>座位预约</strong>
+            <span>暂时无法使用</span>
+          </div>
+
+          <div class="service-item">
+            <strong>数字资源</strong>
+            <span>暂时无法使用</span>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button
+            class="button button-primary"
+            type="button"
+            onclick="window.location.reload()"
+          >
+            刷新页面
+          </button>
+
+          <a class="button" href="../../index.html">返回学校主页</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- 页脚 -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© 2027 江夏大学图书馆</span>
+      <span>Jiangxia University Library · Demo only</span>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,168 @@
+/*
+ * Psychoforge（铸心）专属覆盖样式
+ * 白底、静止阅读，每 5 秒出现一次约 0.3 秒的快速错误抖动。
+ */
+
+.void {
+  background: #f7f7f4;
+  color: #111416;
+}
+
+.void.active {
+  animation: void-boot-light 0.55s ease-out both;
+}
+
+.void::before {
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0 5px,
+    rgba(10, 18, 20, 0.025) 5px 6px
+  );
+  animation: none;
+  opacity: 0.65;
+}
+
+.void::after {
+  color: #b5162e;
+  animation: status-error-pulse 5s steps(1, end) infinite;
+}
+
+.void-center h2 {
+  color: #111416;
+  text-shadow: none;
+  animation: title-error-pulse 5s steps(1, end) infinite;
+}
+
+.void-center p {
+  color: #252a2c;
+  animation: text-error-pulse 5s steps(1, end) infinite;
+}
+
+.void-continue {
+  color: #8a8e90;
+}
+
+.void-close {
+  border-color: #d7d9d9;
+  background: rgba(255, 255, 255, 0.75);
+  color: #737779;
+}
+
+.noise-word {
+  color: #d5d7d7;
+  animation: noise-error-pulse 5s steps(1, end) infinite;
+}
+
+@keyframes void-boot-light {
+  0% {
+    opacity: 0;
+    filter: brightness(1.8);
+  }
+  100% {
+    opacity: 1;
+    filter: none;
+  }
+}
+
+/* 0%—88% 保持完全稳定，89%—93% 快速错误，随后恢复。 */
+@keyframes title-error-pulse {
+  0%, 88%, 94%, 100% {
+    transform: none;
+    clip-path: inset(0);
+    text-shadow: none;
+  }
+  89% {
+    transform: translate(-4px, 1px);
+    clip-path: inset(8% 0 58% 0);
+    text-shadow: 3px 0 #d3133a, -3px 0 #0097a7;
+  }
+  90% {
+    transform: translate(4px, -1px);
+    clip-path: inset(54% 0 10% 0);
+    text-shadow: -2px 0 #d3133a, 2px 0 #0097a7;
+  }
+  91% {
+    transform: translate(-2px, 0);
+    clip-path: inset(22% 0 32% 0);
+    text-shadow: 2px 0 #d3133a, -2px 0 #0097a7;
+  }
+  92% {
+    transform: translate(2px, 0);
+    clip-path: inset(0);
+    text-shadow: none;
+  }
+  93% {
+    transform: translate(-1px, 0);
+  }
+}
+
+@keyframes text-error-pulse {
+  0%, 88%, 94%, 100% {
+    transform: none;
+    opacity: 1;
+    letter-spacing: 0.12em;
+  }
+  89% {
+    transform: translateX(3px);
+    opacity: 0.45;
+  }
+  90% {
+    transform: translateX(-3px);
+    opacity: 1;
+  }
+  91% {
+    transform: translateX(1px);
+    letter-spacing: 0.16em;
+  }
+  92%, 93% {
+    transform: none;
+  }
+}
+
+@keyframes status-error-pulse {
+  0%, 88%, 94%, 100% {
+    transform: none;
+    opacity: 0.72;
+  }
+  89% {
+    transform: translateX(5px);
+    opacity: 0.15;
+  }
+  90% {
+    transform: translateX(-3px);
+    opacity: 1;
+  }
+  91%, 93% {
+    transform: none;
+    opacity: 0.72;
+  }
+}
+
+@keyframes noise-error-pulse {
+  0%, 88%, 94%, 100% {
+    transform: none;
+    opacity: 0.38;
+  }
+  89% {
+    transform: translate(8px, -2px);
+    opacity: 0.8;
+  }
+  90% {
+    transform: translate(-5px, 1px);
+    opacity: 0.16;
+  }
+  91%, 93% {
+    transform: none;
+    opacity: 0.38;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .void.active,
+  .void::after,
+  .void-center h2,
+  .void-center p,
+  .noise-word {
+    animation: none;
+  }
+}
