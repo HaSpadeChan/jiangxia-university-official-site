@@ -1,0 +1,16 @@
+# Jiangxia University — fictional demonstration website
+User-agent: *
+Allow: /
+
+# Exclude utility and non-public portal pages
+Disallow: /pages/search.html
+Disallow: /pages/portal/
+Disallow: /pages/services/email.html
+Disallow: /pages/services/library.html
+Disallow: /pages/services/ehall.html
+Disallow: /pages/admissions/undergraduate-admissions/integration/
+Disallow: /pages/admissions/undergraduate-admissions/pages/search.html
+Disallow: /pages/admissions/undergraduate-admissions/pages/query.html
+
+Sitemap: https://www.jiangxia-university.org/sitemap.xml
+
